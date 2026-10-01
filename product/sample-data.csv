@@ -1,0 +1,14 @@
+transaction_id,date,ticker,transaction_type,quantity,price,gross_amount,fees,tax,currency,fx_rate_to_base,notes
+S001,2026-01-05,ALPHA,deposit,0,0,50000,0,0,SEK,1,Sample initial deposit
+S002,2026-01-06,ALPHA,buy,50,100,5000,10,0,SEK,1,Sample Swedish stock
+S003,2026-01-07,BETA,buy,10,500,5000,10,0,SEK,1,Sample ETF
+S004,2026-01-08,GAMMA,buy,20,100,2000,10,0,USD,9.8,Sample US stock
+S005,2026-01-09,DELTA,buy,30,50,1500,8,0,USD,9.8,Sample US REIT
+S006,2026-01-10,EPS,buy,25,40,1000,7,0,USD,7.1,Sample Canadian asset; currency kept within V1 supported set
+S007,2026-01-11,ZETA,buy,0.05,60000,3000,0,0,USD,9.8,Sample crypto allocation
+S008,2026-02-15,GAMMA,dividend,0,0,35,0,7,USD,9.6,Sample dividend
+S009,2026-02-20,DELTA,dividend,0,0,45,0,9,USD,9.7,Sample dividend
+S010,2026-03-01,GAMMA,sell,5,110,550,5,0,USD,9.7,Sample partial sale
+S011,2026-03-15,ALPHA,dividend,0,0,30,0,0,SEK,1,Sample dividend
+S012,2026-04-01,ALPHA,fee,0,0,0,15,0,SEK,1,Sample account fee
+S013,2026-05-01,ALPHA,withdrawal,0,0,1000,0,0,SEK,1,Sample withdrawal
