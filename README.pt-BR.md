@@ -9,7 +9,6 @@ Carteira, dividendos, alocação e metas com cálculos transparentes e determin�
 
 **[Prévia pública](https://investor-os-app.pages.dev/)** · Código privado · Documentação conferida em **01/10/2026**.
 
-[Snapshot: Landing pública desktop, 01/10/2026](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk)
 
 > A URL pública é uma landing page, não um dashboard funcional. Os documentos registram uma planilha V1 implementada, com beta externo e distribuição ainda pendentes. Há também uma pequena base de cálculos Python. Listar tecnologias planejadas não significa que o app de assinatura esteja implementado.
 
@@ -61,10 +60,6 @@ Capturas guardadas no Drive privado do dono. Os links exigem acesso; não são i
 
 A prévia atual usa fundo escuro, verde, recursos numerados e status explícito. O desenho da planilha separa entradas, fórmulas, checks e onboarding.
 
-| Snapshot | Data | Contexto |
-| --- | --- | --- |
-| [Landing desktop](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk) | 01/10/2026 | Introdução pública sem dados da carteira. |
-| [Landing celular](https://drive.google.com/file/d/1aNNB_NO_bI5u_5ICVVCJ071dzct47EJP/view?usp=drivesdk) | 01/10/2026 | Introdução responsiva, viewport de 390px. |
 
 Não são capturas do dashboard. Wireframes antigos e uma captura verificável da planilha ainda não estão reunidos aqui. Usar somente artefatos reais com dados sintéticos; rotular mockups como mockups.
 
@@ -137,3 +132,9 @@ Não rotular a planilha como produção antes do gate externo e dos testes de c�
 Iuri Johansson. Núcleo Python com biblioteca padrão; planilha destinada a Excel/LibreOffice. Terceiros mantêm seus próprios termos.
 
 [MIT](LICENSE), copyright 2026 Iuri Johansson. Repositório permanece privado.
+
+## Revisão documental - 07/10/2026
+
+Este é um draft de documentação, não uma release nem nova auditoria de runtime. Foram conferidos visibilidade atual do repo, READMEs, scripts e caminho da licença na raiz. Testes e benchmarks históricos acima não foram repetidos. Capturas precisam de criação, revisão de privacidade, upload e inspeção da imagem renderizada. Imagens ausentes não são substituídas por embeds quebrados.
+
+`docs/synthetic-portfolio.md` documenta CLI de três empresas/sete operações inventadas e 14 testes históricos aprovados em 07/10/2026. Nenhum registro real usado. Existe branch separada de dashboard; reconciliar merge/deploy e README final antes de publicar este draft. A landing antiga não comprova dashboard disponível.
