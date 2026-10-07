@@ -1,0 +1,130 @@
+{
+  "label": "SYNTHETIC TEST DATA - NOT A REAL PORTFOLIO",
+  "base_currency": "SEK",
+  "transaction_count": 7,
+  "holdings": [
+    {
+      "ticker": "DEMOA",
+      "mic": "XSTO",
+      "name": "Fictional Aurora Workshop",
+      "quantity": "15",
+      "cost_basis_sek": "2265",
+      "average_cost_sek": "151"
+    },
+    {
+      "ticker": "DEMOB",
+      "mic": "XNYS",
+      "name": "Fictional Blue Orchard",
+      "quantity": "8",
+      "cost_basis_sek": "1620",
+      "average_cost_sek": "202.5"
+    },
+    {
+      "ticker": "DEMOC",
+      "mic": "XTSE",
+      "name": "Fictional Cedar Observatory",
+      "quantity": "3",
+      "cost_basis_sek": "742",
+      "average_cost_sek": "247.3333333333333333333333333"
+    }
+  ],
+  "total_cost_basis_sek": "4627",
+  "limitations": [
+    "No market values, dividends, cash or investment recommendations.",
+    "Normalized trade format, not an Avanza importer.",
+    "CLI only; no dashboard, login, storage or hosted app."
+  ],
+  "trades": [
+    {
+      "transaction_id": "DEMO001",
+      "date": "2026-01-02",
+      "ticker": "DEMOA",
+      "mic": "XSTO",
+      "name": "Fictional Aurora Workshop",
+      "kind": "buy",
+      "quantity": "10",
+      "gross_amount": "1000",
+      "fees": "10",
+      "tax": "0",
+      "fx_rate": "1"
+    },
+    {
+      "transaction_id": "DEMO002",
+      "date": "2026-01-03",
+      "ticker": "DEMOA",
+      "mic": "XSTO",
+      "name": "Fictional Aurora Workshop",
+      "kind": "buy",
+      "quantity": "10",
+      "gross_amount": "2000",
+      "fees": "10",
+      "tax": "0",
+      "fx_rate": "1"
+    },
+    {
+      "transaction_id": "DEMO003",
+      "date": "2026-01-04",
+      "ticker": "DEMOA",
+      "mic": "XSTO",
+      "name": "Fictional Aurora Workshop",
+      "kind": "sell",
+      "quantity": "5",
+      "gross_amount": "900",
+      "fees": "5",
+      "tax": "0",
+      "fx_rate": "1"
+    },
+    {
+      "transaction_id": "DEMO004",
+      "date": "2026-01-05",
+      "ticker": "DEMOB",
+      "mic": "XNYS",
+      "name": "Fictional Blue Orchard",
+      "kind": "buy",
+      "quantity": "8",
+      "gross_amount": "160",
+      "fees": "2",
+      "tax": "0",
+      "fx_rate": "10"
+    },
+    {
+      "transaction_id": "DEMO005",
+      "date": "2026-01-06",
+      "ticker": "DEMOC",
+      "mic": "XTSE",
+      "name": "Fictional Cedar Observatory",
+      "kind": "buy",
+      "quantity": "4",
+      "gross_amount": "120",
+      "fees": "1",
+      "tax": "0",
+      "fx_rate": "7"
+    },
+    {
+      "transaction_id": "DEMO006",
+      "date": "2026-01-07",
+      "ticker": "DEMOC",
+      "mic": "XTSE",
+      "name": "Fictional Cedar Observatory",
+      "kind": "sell",
+      "quantity": "4",
+      "gross_amount": "140",
+      "fees": "1",
+      "tax": "0",
+      "fx_rate": "7"
+    },
+    {
+      "transaction_id": "DEMO007",
+      "date": "2026-01-08",
+      "ticker": "DEMOC",
+      "mic": "XTSE",
+      "name": "Fictional Cedar Observatory",
+      "kind": "buy",
+      "quantity": "3",
+      "gross_amount": "105",
+      "fees": "1",
+      "tax": "0",
+      "fx_rate": "7"
+    }
+  ]
+}
