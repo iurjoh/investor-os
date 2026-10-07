@@ -7,7 +7,7 @@
 
 Track holdings, dividends, allocation and goals with transparent, deterministic calculations.
 
-**[Public product preview](https://investor-os-app.pages.dev/)** · Private source repository · Documentation checked on **2026-10-01**.
+**[Public product preview](https://investor-os-app.pages.dev/)** · Public source repository · Documentation checked on **2026-10-01**.
 
 [Snapshot: Public landing page, desktop, 2026-10-01](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk)
 
@@ -109,6 +109,18 @@ Before claiming speed, measure dataset size, import/calculation time, memory, ha
 
 ## Testing and local run
 
+### Synthetic trade test
+
+An invented three-company portfolio can now be loaded into the Python core:
+
+```sh
+PYTHONPATH=src python3 -m investor_os.sample_portfolio
+```
+
+[Setup, format, expected results and privacy boundary](docs/synthetic-portfolio.md).
+14 local tests passed on 2026-10-07. This CLI is not a web dashboard or broker importer.
+
+
 The V1 [release checklist](product/release-checklist.md) records 20 workbook cases used for validation, but external testers and public-release gates remain unchecked. This update did not obtain or rerun the workbook, so it does not independently certify those 20 results.
 
 The current Python `tests/test_portfolio.py` contains four tests: partial sale, FX/fees/tax, full-sale reset and oversell rejection. **All four passed locally on 2026-10-01 using the source fetched from this repository.** This is a narrow calculation-core result, not an end-to-end product test.
@@ -150,4 +162,4 @@ Do not mark the workbook production-ready until the external beta gate is comple
 
 Created by Iuri Johansson. Python calculation core uses the standard library; the workbook targets Excel / LibreOffice. Planned products and third-party services retain their own terms.
 
-[MIT license](LICENSE), copyright 2026 Iuri Johansson. The source repository remains private.
+[MIT license](LICENSE), copyright 2026 Iuri Johansson. The source repository is public; keep all personal financial data outside Git.
