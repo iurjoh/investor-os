@@ -9,7 +9,6 @@ Track holdings, dividends, allocation and goals with transparent, deterministic 
 
 **[Public product preview](https://investor-os-app.pages.dev/)** · Public source repository · Documentation checked on **2026-10-01**.
 
-[Snapshot: Public landing page, desktop, 2026-10-01](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk)
 
 > The public URL is a landing page, not a working portfolio dashboard. Repository documents describe an implemented V1 workbook; external beta and distribution gates remain open. The repository also contains a small Python calculation foundation. A hosted subscription app is not implemented by the planned-stack list.
 
@@ -70,14 +69,10 @@ graph TD
 
 ## Design and snapshots
 
-Snapshots are stored privately in the owner's Drive. The links require access; they are not public image embeds. Repository image upload failed during this update, so there are no broken placeholder images.
+Dated, repository-owned screenshots remain to be supplied. Private Drive evidence is intentionally not linked.
 
 The current public preview uses a dark background, green accents, numbered feature descriptions and an explicit development status. Workbook design separates inputs, calculated areas, checks and onboarding.
 
-| Snapshot | Date | Context |
-| --- | --- | --- |
-| [Desktop landing](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk) | 2026-10-01 | Public product introduction, no portfolio data. |
-| [Mobile landing](https://drive.google.com/file/d/1aNNB_NO_bI5u_5ICVVCJ071dzct47EJP/view?usp=drivesdk) | 2026-10-01 | Responsive public introduction, 390px viewport. |
 
 These are landing-page images, not dashboard screenshots. Earlier wireframes and a workbook dashboard capture have not been collected here. Add them only from verified artifacts with synthetic data; never substitute a mockup for a working screen without labelling it.
 
@@ -163,3 +158,9 @@ Do not mark the workbook production-ready until the external beta gate is comple
 Created by Iuri Johansson. Python calculation core uses the standard library; the workbook targets Excel / LibreOffice. Planned products and third-party services retain their own terms.
 
 [MIT license](LICENSE), copyright 2026 Iuri Johansson. The source repository is public; keep all personal financial data outside Git.
+
+## Documentation review - 2026-10-07
+
+This is a documentation draft, not a release or a fresh runtime audit. Current repository visibility, README files, package scripts and root license paths were checked. Historical runtime and benchmark results above have not been rerun. Screenshots require a separate capture, privacy check, upload and rendered-image check before completion. Missing images are not replaced with broken embeds.
+
+`docs/synthetic-portfolio.md` now documents the invented three-company, seven-transaction CLI and 14 historical passing tests dated 2026-10-07. No real account records are used. A separate dashboard branch exists; merge/deployment and its final README must be reconciled before publishing this draft. Do not infer current dashboard availability from the old landing URL.
