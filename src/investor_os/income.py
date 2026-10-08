@@ -30,6 +30,8 @@ def income_summary(events, as_of):
             raise ValueError('invalid date or amount') from exc
         if observed>as_of or any(v is not None and (not v.is_finite() or v<0) for v in (gross,withheld,fx)) or fx==0:
             raise ValueError('invalid date/amount')
+        if e['currency']=='SEK' and fx is not None and fx!=1:
+            raise ValueError('SEK FX must equal 1')
         if gross is not None and withheld is not None and withheld>gross:
             raise ValueError('withholding exceeds gross')
         received=e['status']=='received'
