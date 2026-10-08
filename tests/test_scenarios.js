@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),{project}=require('../web/scenarios.js');
+const x={initial:'10000',annual:'1200',yield:'0.04',withholding:'0.15',inflation:'0.02',target:'100',contributionGoal:'1200',contributed:'600',years:10,low:'0.02',base:'0.04',high:'0.06'};let count=0;const check=f=>{f();count++};
+check(()=>assert.equal(project(x).annual_progress,50));
+check(()=>assert.equal(project(x).scenarios[1].rows[0].capital,'11600.00000000'));
+check(()=>assert.equal(project({...x,years:1,annual:'0',base:'0',low:'0',high:'0'}).scenarios[1].rows[0].capital,'10000.00000000'));
+check(()=>assert.equal(project({...x,contributed:'2400'}).annual_display,100));
+check(()=>assert.equal(project({...x,initial:'0',annual:'0'}).income_progress,0));
+check(()=>assert.equal(project({...x,inflation:'0'}).scenarios[0].rows[0].capital_today,project({...x,inflation:'0'}).scenarios[0].rows[0].capital));
+for(const [k,v] of [['target','0'],['contributionGoal','0'],['initial','NaN'],['annual','-1'],['withholding','1.1'],['yield','2'],['years',51],['years',1.2],['low','-1.1']])check(()=>assert.throws(()=>project({...x,[k]:v})));
+check(()=>assert.equal(project({...x,target:'100000000'}).scenarios[0].estimated_target_year,null));
+check(()=>assert.equal(project({...x,low:'-1',annual:'0'}).scenarios[0].rows[0].capital,'0.00000000'));
+check(()=>assert.throws(()=>project({...x,low:'0.5'})));
+check(()=>assert.throws(()=>project({...x,initial:'9'.repeat(400)})));
+console.log(count+' scenario checks passed');
