@@ -35,12 +35,12 @@ const server=createServer(async(req,res)=>{
    await page.unroute('**/portfolio.json');await page.reload();await page.getByText('Dados fictícios carregados.',{exact:false}).waitFor();assert(!(await page.locator('#export').isDisabled()));checks++;
   }
   await page.route('**/currencies.json',r=>r.abort());await page.reload();await page.locator('#tab-multi').click();await page.getByText('Lista de moedas indisponível.',{exact:false}).waitFor();assert(await page.locator('#multi-apply').isDisabled());await page.unroute('**/currencies.json');await page.reload();await page.locator('#tab-multi').click();await page.locator('#multi-apply:not([disabled])').waitFor();checks++;
-  // Data-load failures leave the clear-search button callable; exercise it to
-  // expose a known TypeError rather than falsely count the failure UI as safe.
-  await page.route('**/portfolio.json',r=>r.abort());await page.reload();await page.getByText('Não foi possível carregar a demo.',{exact:false}).waitFor();await page.locator('#tab-holdings').click();await page.locator('#clear').click();await page.waitForTimeout(50);
-  assert(errors.some(e=>/holdings/.test(e)), 'Known defect changed: remove this characterization and assert zero errors');
-  console.log(width+': 6 contracts passed; known clear-search-after-load-error defect reproduced');
+  // After a load failure, clear-search must remain safe and reload recovers.
+  await page.route('**/portfolio.json',r=>r.abort());await page.reload();await page.getByText('Não foi possível carregar a demo.',{exact:false}).waitFor();await page.locator('#tab-holdings').click();await page.locator('#clear').click();
+  await page.unroute('**/portfolio.json');await page.reload();await page.getByText('Dados fictícios carregados.',{exact:false}).waitFor();
+  assert.deepEqual(errors, [], 'No unhandled page error is acceptable');checks++;
+  console.log(width+': 7 success/recovery contracts passed; zero page errors');
   await context.close();
  }}finally{await browser.close();server.close();}
- console.log(checks+' browser success/recovery contracts passed. Two known-defect characterizations are NOT passing acceptance criteria.');
+ console.log(checks+' browser success/recovery contracts passed; zero page errors.');
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});
