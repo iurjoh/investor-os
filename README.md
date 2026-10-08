@@ -5,12 +5,12 @@
 ![Stage: pre-external-beta](https://img.shields.io/badge/stage-pre--external--beta-yellow)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue)
 
-Track holdings, dividends, allocation and goals with transparent, deterministic calculations.
+A public synthetic investing demo and auditable Python calculation core. Explore invented data; this is not a private portfolio manager.
 
 **[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
 
 
-> A read-only synthetic dashboard is now present in `main` (`web/`) and reachable at the demo URL, checked on 2026-10-08. It shows three invented companies and seven transactions, with 4,627 SEK remaining cost basis, not market value. It accepts no real data and has no login, broker import, backend or private storage. The workbook external-beta gates remain separate and open.
+> Current stage: public synthetic demo. Seven tabs are present in `main` (`web/`) and the live page opened on 2026-10-08: Overview, Holdings, Transactions, Income, Value and exposure, Goals and scenarios, and Currencies. The interface is PT-BR; this English README explains it. Inputs are for fictional scenarios only. No real-data import, login, broker connection, backend or private storage. Source/deploy commit parity is not independently verified. The workbook external-beta gates remain separate.
 
 ## Contents
 
@@ -44,9 +44,9 @@ Goals: transparent calculations, useful summaries, manual overrides and auditabl
 
 **Python foundation in this repository:** `Decimal` arithmetic, chronological trade ordering, purchase cost including fees/tax/FX, partial-sale cost reduction, full-sale reset and rejection of overselling.
 
-**Delivered synthetic web demo:** overview, holdings search/empty state, fictional transaction ledger, synthetic JSON export and reset.
+**Current synthetic web demo:** overview and remaining cost basis; holdings search; fictional transaction ledger; income with separate received/announced/estimated states; manual dated value/exposure snapshots; hypothetical contribution/income scenarios; and a separate multi-currency example with historical FX. Synthetic JSON export and reset are available. Market snapshots and scenario inputs are not live quotes, investment forecasts or certified financial results. The original SEK fixture cost is not the market value of every scenario.
 
-**Not delivered for private use:** authentication, multi-user sync, broker connection, automated price feeds, subscription billing or real-data import/storage.
+**Not delivered for private use:** authentication, multi-user sync, broker connection, automated price feeds, subscription billing or real-data import/storage. A Windows local app with Cryptomator-encrypted Drive backups is a future design, not delivered software or a proved restore path.
 
 ## Architecture
 
@@ -74,7 +74,7 @@ graph TD
 
 Dated, repository-owned screenshots remain to be supplied. Private Drive evidence is intentionally not linked.
 
-The current public preview uses a dark background, green accents, numbered feature descriptions and an explicit development status. Workbook design separates inputs, calculated areas, checks and onboarding.
+The dashboard uses a dark background, green accents, seven tabbed views and an explicit fictional-data notice. The separate landing introduces the product direction; it is not the dashboard or a private app. Workbook design separates inputs, calculated areas, checks and onboarding.
 
 
 No screenshot asset is included in this draft. Add dated captures from the actual synthetic dashboard only after privacy review and successful repository upload. Never substitute a mockup without labelling it.
@@ -167,3 +167,7 @@ Created by Iuri Johansson. Python calculation core uses the standard library; th
 This is a documentation draft, not a release or a fresh runtime audit. Current repository visibility, README files, package scripts and root license paths were checked. Historical runtime and benchmark results above have not been rerun. Screenshots require a separate capture, privacy check, upload and rendered-image check before completion. Missing images are not replaced with broken embeds.
 
 `docs/synthetic-portfolio.md` now documents the invented three-company, seven-transaction CLI and 14 historical passing tests dated 2026-10-07. No real account records are used. The dashboard source is now in `main`; the separate dashboard URL was opened and visually checked on 2026-10-08. This review does not certify deployment commit parity or private investment use. Old four-test documentation is historical, not the current test count.
+
+## Release and evidence boundary - 2026-10-08
+
+The seven-tab source and reachable live page were checked in this documentation round. No calculation, browser journey, recovery or benchmark suite was rerun here. Test counts above are dated historical results, not a current CI/deploy certificate. Record source SHA, deployment ID, smoke test and rollback artifact together before attesting a release. Keep real records out of this public demo until a separate private import, reconciliation, snapshot and restore workflow passes review.
