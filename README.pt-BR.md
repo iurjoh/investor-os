@@ -10,7 +10,7 @@ Demo pública sintética e núcleo Python com cálculos auditáveis. Explore dad
 **[Demo de dashboard sintético](https://investor-os-dashboard.pages.dev/)** · [Landing separada](https://investor-os-app.pages.dev/) · Código público · Revisão em **08/10/2026**.
 
 
-> Estágio atual: demo pública sintética. Sete abas estão no `main` (`web/`) e a página ao vivo abriu em 08/10/2026: Visão geral, Posições, Operações, Proventos, Valor e exposição, Metas e cenários e Moedas. A interface é PT-BR; o README EN a explica em inglês. Entradas servem apenas para cenários fictícios. Sem importação real, login, corretora, backend ou armazenamento privado. Paridade de commit source/deploy não confirmada de forma independente. Gates de beta externo da planilha continuam separados.
+> Estágio atual: demo pública sintética. Sete abas estão no `main` (`web/`) e a página ao vivo abriu em 08/10/2026: Visão geral, Posições, Operações, Proventos, Valor e exposição, Metas e cenários e Moedas. A interface tem PT-BR (padrão) e inglês, com seletor de idioma. Só essa preferência é salva localmente, não os valores financeiros. Entradas servem apenas para cenários fictícios. Sem importação real, login, corretora, backend ou armazenamento privado. Paridade de commit source/deploy não confirmada de forma independente. Gates de beta externo da planilha continuam separados.
 
 ## Ideia e planejamento
 
@@ -145,3 +145,7 @@ Este é um draft de documentação, não uma release nem nova auditoria de runti
 ## Limite de release e evidência - 08/10/2026
 
 Código das sete abas e página ao vivo acessível conferidos nesta rodada documental. Nenhuma suite de cálculo, jornada, recuperação ou benchmark repetida aqui. Contagens acima são resultados históricos datados, não certificado atual de CI/deploy. Registrar SHA, ID do deploy, smoke e artefato de rollback juntos antes de atestar uma release. Dados reais ficam fora desta demo pública até uma jornada privada de importação, conciliação, snapshot e restauração passar revisão separada.
+
+## Interface PT/EN
+
+A demonstração tem seletor Português/English, com PT-BR como padrão. Só a preferência de idioma é salva no navegador; valores financeiros continuam voláteis. Números e moedas seguem o idioma. Campos decimais de cálculo continuam exigindo ponto. Trocar idioma preserva os filtros e valores fictícios em edição; exportar JSON não traduz nem modifica os dados.
