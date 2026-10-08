@@ -5,12 +5,12 @@
 ![Estágio: antes do beta externo](https://img.shields.io/badge/stage-pre--external--beta-yellow)
 ![Licença: MIT](https://img.shields.io/badge/license-MIT-blue)
 
-Carteira, dividendos, alocação e metas com cálculos transparentes e determinísticos.
+Demo pública sintética e núcleo Python com cálculos auditáveis. Explore dados inventados; não é gestor privado de carteira.
 
 **[Demo de dashboard sintético](https://investor-os-dashboard.pages.dev/)** · [Landing separada](https://investor-os-app.pages.dev/) · Código público · Revisão em **08/10/2026**.
 
 
-> O dashboard sintético somente leitura está no `main` (`web/`) e acessível na URL de demo, verificada em 08/10/2026. Mostra três empresas inventadas e sete operações, com custo remanescente de 4.627 SEK, não valor de mercado. Não aceita dados reais e não tem login, importação de corretora, backend ou armazenamento privado. Os gates de beta externo da planilha continuam separados e pendentes.
+> Estágio atual: demo pública sintética. Sete abas estão no `main` (`web/`) e a página ao vivo abriu em 08/10/2026: Visão geral, Posições, Operações, Proventos, Valor e exposição, Metas e cenários e Moedas. A interface é PT-BR; o README EN a explica em inglês. Entradas servem apenas para cenários fictícios. Sem importação real, login, corretora, backend ou armazenamento privado. Paridade de commit source/deploy não confirmada de forma independente. Gates de beta externo da planilha continuam separados.
 
 ## Ideia e planejamento
 
@@ -31,9 +31,9 @@ Objetivos: cálculos claros, resumos úteis, ajustes manuais e dados auditáveis
 
 **Base Python existente:** Decimal, ordenação cronológica, custo de compras com taxas/impostos/câmbio, redução de custo na venda parcial, zeragem na venda total e rejeição de venda acima da posição.
 
-**Demo web sintética entregue:** visão geral, busca/estado vazio em posições, operações fictícias, exportação JSON sintética e reset.
+**Demo sintética atual:** visão geral/custo remanescente; busca de posições; operações fictícias; proventos com estados recebido/anunciado/estimado separados; snapshots manuais datados de valor/exposição; cenários hipotéticos de aporte/renda; exemplo multi-moeda separado com FX histórico. Exportação JSON sintética e reset disponíveis. Snapshots e hipóteses não são cotações ao vivo, previsão de investimento ou resultados financeiros certificados. Custo da fixture SEK original não é valor de mercado de todos os cenários.
 
-**Não entregue para uso privado:** autenticação, sincronização multiusuário, corretoras, cotações automáticas, assinaturas ou importação/armazenamento de dados reais.
+**Não entregue para uso privado:** autenticação, sincronização multiusuário, corretoras, cotações automáticas, assinaturas ou importação/armazenamento de dados reais. App local Windows e backup Drive cifrado por Cryptomator são desenho futuro, não software entregue nem restauração comprovada.
 
 ## Arquitetura
 
@@ -61,7 +61,7 @@ graph TD
 
 Capturas datadas e guardadas no próprio repositório seguem pendentes. Evidências privadas do Drive não são linkadas.
 
-A prévia atual usa fundo escuro, verde, recursos numerados e status explícito. O desenho da planilha separa entradas, fórmulas, checks e onboarding.
+Dashboard usa fundo escuro, verde, sete abas e aviso explícito de dados fictícios. A landing separada apresenta a direção do produto, não o dashboard nem app privado. A planilha separa entradas, fórmulas, checks e onboarding.
 
 
 Nenhum asset de captura está incluído neste draft. Adicionar capturas reais datadas do dashboard sintético só após revisão de privacidade e upload no repo. Rotular mockups como mockups.
@@ -141,3 +141,7 @@ Iuri Johansson. Núcleo Python com biblioteca padrão; planilha destinada a Exce
 Este é um draft de documentação, não uma release nem nova auditoria de runtime. Foram conferidos visibilidade atual do repo, READMEs, scripts e caminho da licença na raiz. Testes e benchmarks históricos acima não foram repetidos. Capturas precisam de criação, revisão de privacidade, upload e inspeção da imagem renderizada. Imagens ausentes não são substituídas por embeds quebrados.
 
 `docs/synthetic-portfolio.md` documenta CLI de três empresas/sete operações inventadas e 14 testes históricos aprovados em 07/10/2026. Nenhum registro real usado. O código do dashboard está no `main`; a URL separada foi aberta e inspecionada visualmente em 08/10/2026. Esta revisão não certifica paridade de commit do deploy nem uso privado de investimentos. A documentação de quatro testes é histórica, não a contagem atual.
+
+## Limite de release e evidência - 08/10/2026
+
+Código das sete abas e página ao vivo acessível conferidos nesta rodada documental. Nenhuma suite de cálculo, jornada, recuperação ou benchmark repetida aqui. Contagens acima são resultados históricos datados, não certificado atual de CI/deploy. Registrar SHA, ID do deploy, smoke e artefato de rollback juntos antes de atestar uma release. Dados reais ficam fora desta demo pública até uma jornada privada de importação, conciliação, snapshot e restauração passar revisão separada.
