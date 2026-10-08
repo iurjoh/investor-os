@@ -41,3 +41,5 @@ Follow-up: base review before implementing selected DivSmart features in #3.
 Private use requires a separate security-reviewed runtime, authorization,
 private storage/backups, import/reconciliation and retention controls. A
 public static site is not that environment.
+
+Phase 1 data validation and calculation explanations: [contract](data-quality.md).
