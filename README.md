@@ -7,7 +7,7 @@
 
 Track holdings, dividends, allocation and goals with transparent, deterministic calculations.
 
-**[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-01**.
+**[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
 
 
 > A read-only synthetic dashboard is now present in `main` (`web/`) and reachable at the demo URL, checked on 2026-10-08. It shows three invented companies and seven transactions, with 4,627 SEK remaining cost basis, not market value. It accepts no real data and has no login, broker import, backend or private storage. The workbook external-beta gates remain separate and open.
@@ -77,7 +77,7 @@ Dated, repository-owned screenshots remain to be supplied. Private Drive evidenc
 The current public preview uses a dark background, green accents, numbered feature descriptions and an explicit development status. Workbook design separates inputs, calculated areas, checks and onboarding.
 
 
-These are landing-page images, not dashboard screenshots. Earlier wireframes and a workbook dashboard capture have not been collected here. Add them only from verified artifacts with synthetic data; never substitute a mockup for a working screen without labelling it.
+No screenshot asset is included in this draft. Add dated captures from the actual synthetic dashboard only after privacy review and successful repository upload. Never substitute a mockup without labelling it.
 
 ## Development process
 
@@ -121,7 +121,7 @@ PYTHONPATH=src python3 -m investor_os.sample_portfolio
 
 The V1 [release checklist](product/release-checklist.md) records 20 workbook cases used for validation, but external testers and public-release gates remain unchecked. This update did not obtain or rerun the workbook, so it does not independently certify those 20 results.
 
-The current Python `tests/test_portfolio.py` contains four tests: partial sale, FX/fees/tax, full-sale reset and oversell rejection. **All four passed locally on 2026-10-01 using the source fetched from this repository.** This is a narrow calculation-core result, not an end-to-end product test.
+Historical 2026-10-01 check: `tests/test_portfolio.py` then contained four tests: partial sale, FX/fees/tax, full-sale reset and oversell rejection. **All four passed locally on 2026-10-01 using the source fetched from this repository.** This is a narrow calculation-core result, not an end-to-end product test.
 
 ```sh
 # From repository root, with Python 3 available:
