@@ -16,6 +16,7 @@ class Trade:
     fees: Decimal = D("0")
     tax: Decimal = D("0")
     fx_rate: Decimal = D("1")
+    sequence: int | None = None
 
 @dataclass(frozen=True)
 class Position:
@@ -40,9 +41,19 @@ def calculate_position(trades: Iterable[Trade]) -> Position:
             raise ValueError("quantity and FX must be positive")
         if not isinstance(trade.transaction_date, date):
             raise ValueError("trade date must be a date")
+    # IDs identify receipts; they never establish execution order.
+    days = {}
+    for trade in trades:
+        if trade.sequence is not None and (type(trade.sequence) is not int or not 0 <= trade.sequence <= 9007199254740991):
+            raise ValueError("sequence must be a non-negative safe integer")
+        days.setdefault(trade.transaction_date, []).append(trade)
+    for same_day in days.values():
+        if len(same_day) > 1 and (any(t.sequence is None for t in same_day) or
+                len({t.sequence for t in same_day}) != len(same_day)):
+            raise ValueError("same-day trades require unique explicit execution sequence")
     quantity = D("0")
     cost = D("0")
-    for trade in sorted(trades, key=lambda t: (t.transaction_date, t.transaction_id)):
+    for trade in sorted(trades, key=lambda t: (t.transaction_date, t.sequence if t.sequence is not None else 0)):
         if trade.quantity < 0 or trade.fx_rate <= 0:
             raise ValueError("quantity must be non-negative and fx_rate positive")
         if trade.kind == "buy":
