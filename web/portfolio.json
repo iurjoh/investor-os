@@ -34,6 +34,10 @@
     "Normalized trade format, not an Avanza importer.",
     "CLI only; no dashboard, login, storage or hosted app."
   ],
+  "schema_version": 1,
+  "fixture_as_of": "2026-01-08",
+  "calculation_method": "weighted-average Decimal; acquisition includes fees and tax",
+  "source": "Embedded wholly invented SAMPLE_CSV, not a broker export",
   "trades": [
     {
       "transaction_id": "DEMO001",
@@ -46,7 +50,8 @@
       "gross_amount": "1000",
       "fees": "10",
       "tax": "0",
-      "fx_rate": "1"
+      "fx_rate": "1",
+      "currency": "SEK"
     },
     {
       "transaction_id": "DEMO002",
@@ -59,7 +64,8 @@
       "gross_amount": "2000",
       "fees": "10",
       "tax": "0",
-      "fx_rate": "1"
+      "fx_rate": "1",
+      "currency": "SEK"
     },
     {
       "transaction_id": "DEMO003",
@@ -72,7 +78,8 @@
       "gross_amount": "900",
       "fees": "5",
       "tax": "0",
-      "fx_rate": "1"
+      "fx_rate": "1",
+      "currency": "SEK"
     },
     {
       "transaction_id": "DEMO004",
@@ -85,7 +92,8 @@
       "gross_amount": "160",
       "fees": "2",
       "tax": "0",
-      "fx_rate": "10"
+      "fx_rate": "10",
+      "currency": "USD"
     },
     {
       "transaction_id": "DEMO005",
@@ -98,7 +106,8 @@
       "gross_amount": "120",
       "fees": "1",
       "tax": "0",
-      "fx_rate": "7"
+      "fx_rate": "7",
+      "currency": "CAD"
     },
     {
       "transaction_id": "DEMO006",
@@ -111,7 +120,8 @@
       "gross_amount": "140",
       "fees": "1",
       "tax": "0",
-      "fx_rate": "7"
+      "fx_rate": "7",
+      "currency": "CAD"
     },
     {
       "transaction_id": "DEMO007",
@@ -124,7 +134,8 @@
       "gross_amount": "105",
       "fees": "1",
       "tax": "0",
-      "fx_rate": "7"
+      "fx_rate": "7",
+      "currency": "CAD"
     }
   ]
 }
