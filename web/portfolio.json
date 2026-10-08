@@ -137,5 +137,147 @@
       "fx_rate": "7",
       "currency": "CAD"
     }
-  ]
-}
+  ],
+  "income": {
+    "as_of": "2026-01-31",
+    "totals": {
+      "gross_paid": "70",
+      "withheld_paid": "6.0",
+      "net_paid": "64.0",
+      "kf_refund": "5",
+      "expected_gross": "51",
+      "expected_net": "47.85"
+    },
+    "events": [
+      {
+        "id": "DIV-DEMO-1",
+        "ticker": "DEMOA",
+        "status": "received",
+        "payment_date": "2026-01-15",
+        "ex_date": "2026-01-10",
+        "currency": "SEK",
+        "gross": "30",
+        "withheld": "0",
+        "fx": "1",
+        "source": "Invented demo receipt 1",
+        "observed_at": "2026-01-31",
+        "reconciled": true,
+        "kind": "dividend",
+        "gross_sek": "30",
+        "net_sek": "30"
+      },
+      {
+        "id": "DIV-DEMO-2",
+        "ticker": "DEMOB",
+        "status": "received",
+        "payment_date": "2026-01-20",
+        "ex_date": null,
+        "currency": "USD",
+        "gross": "4",
+        "withheld": "0.6",
+        "fx": "10",
+        "source": "Invented demo receipt 2",
+        "observed_at": "2026-01-31",
+        "reconciled": true,
+        "kind": "dividend",
+        "gross_sek": "40",
+        "net_sek": "34.0"
+      },
+      {
+        "id": "KF-DEMO-1",
+        "ticker": "DEMO",
+        "status": "received",
+        "payment_date": "2026-01-25",
+        "ex_date": null,
+        "currency": "SEK",
+        "gross": "5",
+        "withheld": "0",
+        "fx": "1",
+        "source": "Invented KF refund receipt",
+        "observed_at": "2026-01-31",
+        "reconciled": true,
+        "kind": "kf_refund",
+        "gross_sek": "5",
+        "net_sek": "5"
+      },
+      {
+        "id": "DIV-DEMO-3",
+        "ticker": "DEMOC",
+        "status": "announced",
+        "payment_date": "2026-02-15",
+        "ex_date": "2026-02-01",
+        "currency": "CAD",
+        "gross": "3",
+        "withheld": "0.45",
+        "fx": "7",
+        "source": "Invented announcement, estimated FX/tax",
+        "observed_at": "2026-01-31",
+        "reconciled": false,
+        "kind": "dividend",
+        "gross_sek": "21",
+        "net_sek": "17.85"
+      },
+      {
+        "id": "DIV-DEMO-4",
+        "ticker": "DEMOA",
+        "status": "estimated",
+        "payment_date": "2026-03-15",
+        "ex_date": null,
+        "currency": "SEK",
+        "gross": "30",
+        "withheld": "0",
+        "fx": "1",
+        "source": "Invented estimate, not an announcement",
+        "observed_at": "2026-01-31",
+        "reconciled": false,
+        "kind": "dividend",
+        "gross_sek": "30",
+        "net_sek": "30"
+      },
+      {
+        "id": "DIV-DEMO-5",
+        "ticker": "DEMOB",
+        "status": "pending",
+        "payment_date": "2026-01-29",
+        "ex_date": null,
+        "currency": "USD",
+        "gross": "4",
+        "withheld": null,
+        "fx": null,
+        "source": "Invented unconfirmed payment",
+        "observed_at": "2026-01-31",
+        "reconciled": false,
+        "kind": "dividend",
+        "gross_sek": null,
+        "net_sek": null
+      }
+    ],
+    "periods": {
+      "monthly": {
+        "2026-01": {
+          "net_paid": "64.0",
+          "kf_refund": "5",
+          "expected_net": "0"
+        },
+        "2026-02": {
+          "net_paid": "0",
+          "kf_refund": "0",
+          "expected_net": "17.85"
+        },
+        "2026-03": {
+          "net_paid": "0",
+          "kf_refund": "0",
+          "expected_net": "30"
+        }
+      },
+      "annual": {
+        "2026": {
+          "net_paid": "64.0",
+          "kf_refund": "5",
+          "expected_net": "47.85"
+        }
+      }
+    },
+    "incomplete_expected": 1
+  }
+    }
