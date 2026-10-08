@@ -7,11 +7,10 @@
 
 Track holdings, dividends, allocation and goals with transparent, deterministic calculations.
 
-**[Public product preview](https://investor-os-app.pages.dev/)** · Public source repository · Documentation checked on **2026-10-01**.
+**[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
 
-[Snapshot: Public landing page, desktop, 2026-10-01](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk)
 
-> The public URL is a landing page, not a working portfolio dashboard. Repository documents describe an implemented V1 workbook; external beta and distribution gates remain open. The repository also contains a small Python calculation foundation. A hosted subscription app is not implemented by the planned-stack list.
+> A read-only synthetic dashboard is now present in `main` (`web/`) and reachable at the demo URL, checked on 2026-10-08. It shows three invented companies and seven transactions, with 4,627 SEK remaining cost basis, not market value. It accepts no real data and has no login, broker import, backend or private storage. The workbook external-beta gates remain separate and open.
 
 ## Contents
 
@@ -45,7 +44,9 @@ Goals: transparent calculations, useful summaries, manual overrides and auditabl
 
 **Python foundation in this repository:** `Decimal` arithmetic, chronological trade ordering, purchase cost including fees/tax/FX, partial-sale cost reduction, full-sale reset and rejection of overselling.
 
-**Not yet a delivered web dashboard:** authentication, multi-user sync, broker connection, automated price feeds, subscription billing and public distribution.
+**Delivered synthetic web demo:** overview, holdings search/empty state, fictional transaction ledger, synthetic JSON export and reset.
+
+**Not delivered for private use:** authentication, multi-user sync, broker connection, automated price feeds, subscription billing or real-data import/storage.
 
 ## Architecture
 
@@ -64,22 +65,19 @@ graph TD
 | Calculation foundation | Python standard library, Decimal | Present in `src/investor_os/portfolio.py`; deterministic arithmetic. |
 | Data model | PostgreSQL schema | Model in `database/`; not proof of a running hosted database. |
 | Personal-first target | Local UI, local scheduled jobs, CSV/JSON export and encrypted backups | Future delivery in [architecture](docs/architecture.md). |
-| Public website | Product landing page | Preview of the product, not account/portfolio functionality. |
+| Public dashboard | Static HTML/JS and generated JSON in `web/` | Read-only invented portfolio; no accounts or real data. |
+| Separate landing | Product landing page | Product introduction, not private portfolio functionality. |
 
 [Architecture](docs/architecture.md) is the current personal-first, zero-cost direction. Older product proposals mention Next.js, Supabase, n8n Cloud, Vercel, OpenAI workflows and Gumroad. Those are historical/planned options, not installed services or subscriptions. Current architecture rejects services requiring cards, trials or automatic overage. AI is not used for deterministic financial arithmetic.
 
 ## Design and snapshots
 
-Snapshots are stored privately in the owner's Drive. The links require access; they are not public image embeds. Repository image upload failed during this update, so there are no broken placeholder images.
+Dated, repository-owned screenshots remain to be supplied. Private Drive evidence is intentionally not linked.
 
 The current public preview uses a dark background, green accents, numbered feature descriptions and an explicit development status. Workbook design separates inputs, calculated areas, checks and onboarding.
 
-| Snapshot | Date | Context |
-| --- | --- | --- |
-| [Desktop landing](https://drive.google.com/file/d/1nmM5L_m1S-PdOMEbbOeNIgHnR2rwDtpS/view?usp=drivesdk) | 2026-10-01 | Public product introduction, no portfolio data. |
-| [Mobile landing](https://drive.google.com/file/d/1aNNB_NO_bI5u_5ICVVCJ071dzct47EJP/view?usp=drivesdk) | 2026-10-01 | Responsive public introduction, 390px viewport. |
 
-These are landing-page images, not dashboard screenshots. Earlier wireframes and a workbook dashboard capture have not been collected here. Add them only from verified artifacts with synthetic data; never substitute a mockup for a working screen without labelling it.
+No screenshot asset is included in this draft. Add dated captures from the actual synthetic dashboard only after privacy review and successful repository upload. Never substitute a mockup without labelling it.
 
 ## Development process
 
@@ -118,12 +116,12 @@ PYTHONPATH=src python3 -m investor_os.sample_portfolio
 ```
 
 [Setup, format, expected results and privacy boundary](docs/synthetic-portfolio.md).
-14 local tests passed on 2026-10-07. This CLI is not a web dashboard or broker importer.
+14 local tests passed on 2026-10-07. The CLI generates the fixture used by the separate static dashboard; neither is a broker importer.
 
 
 The V1 [release checklist](product/release-checklist.md) records 20 workbook cases used for validation, but external testers and public-release gates remain unchecked. This update did not obtain or rerun the workbook, so it does not independently certify those 20 results.
 
-The current Python `tests/test_portfolio.py` contains four tests: partial sale, FX/fees/tax, full-sale reset and oversell rejection. **All four passed locally on 2026-10-01 using the source fetched from this repository.** This is a narrow calculation-core result, not an end-to-end product test.
+Historical 2026-10-01 check: `tests/test_portfolio.py` then contained four tests: partial sale, FX/fees/tax, full-sale reset and oversell rejection. **All four passed locally on 2026-10-01 using the source fetched from this repository.** This is a narrow calculation-core result, not an end-to-end product test.
 
 ```sh
 # From repository root, with Python 3 available:
@@ -132,7 +130,7 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 sh run_tests.sh
 ```
 
-No third-party runtime dependency is needed for the inspected calculation module. Read [workbook implementation](product/xlsx-implementation.md) for spreadsheet conventions and setup; there is no `npm run dev` web app in this repository.
+No third-party runtime dependency is needed for the inspected calculation module. Read [workbook implementation](product/xlsx-implementation.md) for spreadsheet conventions and setup; the static dashboard runs with `python3 build_demo.py` then `python3 -m http.server 8000 --directory web`. No Node runtime or backend is required. See [web demo scope and QA](docs/web-demo.md).
 
 ## Release and roadmap
 
@@ -163,3 +161,9 @@ Do not mark the workbook production-ready until the external beta gate is comple
 Created by Iuri Johansson. Python calculation core uses the standard library; the workbook targets Excel / LibreOffice. Planned products and third-party services retain their own terms.
 
 [MIT license](LICENSE), copyright 2026 Iuri Johansson. The source repository is public; keep all personal financial data outside Git.
+
+## Documentation review - 2026-10-07
+
+This is a documentation draft, not a release or a fresh runtime audit. Current repository visibility, README files, package scripts and root license paths were checked. Historical runtime and benchmark results above have not been rerun. Screenshots require a separate capture, privacy check, upload and rendered-image check before completion. Missing images are not replaced with broken embeds.
+
+`docs/synthetic-portfolio.md` now documents the invented three-company, seven-transaction CLI and 14 historical passing tests dated 2026-10-07. No real account records are used. The dashboard source is now in `main`; the separate dashboard URL was opened and visually checked on 2026-10-08. This review does not certify deployment commit parity or private investment use. Old four-test documentation is historical, not the current test count.
