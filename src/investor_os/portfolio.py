@@ -27,6 +27,19 @@ class Position:
         return self.cost_basis_base / self.quantity if self.quantity else None
 
 def calculate_position(trades: Iterable[Trade]) -> Position:
+    trades = list(trades)
+    seen = set()
+    for trade in trades:
+        if not trade.transaction_id or trade.transaction_id in seen:
+            raise ValueError("trade IDs must be non-empty and unique")
+        seen.add(trade.transaction_id)
+        values = (trade.quantity, trade.gross_amount, trade.fees, trade.tax, trade.fx_rate)
+        if any(not isinstance(v, Decimal) or not v.is_finite() or v < 0 for v in values):
+            raise ValueError("trade amounts must be finite non-negative Decimals")
+        if trade.quantity == 0 or trade.fx_rate == 0:
+            raise ValueError("quantity and FX must be positive")
+        if not isinstance(trade.transaction_date, date):
+            raise ValueError("trade date must be a date")
     quantity = D("0")
     cost = D("0")
     for trade in sorted(trades, key=lambda t: (t.transaction_date, t.transaction_id)):
