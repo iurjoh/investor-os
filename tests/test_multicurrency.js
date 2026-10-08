@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),{snapshot}=require('../web/multicurrency.js'),{codes}=require('../web/currencies.json');const list=codes.map(x=>x.code);let count=0;const check=f=>{f();count++};
+const fx=(to,rate,date)=>({from:'VND',to,rate,date,source:'Invented only'});
+const original={id:'demo-vnd',currency:'VND',quantity:'10',price:'25000',price_date:'2026-01-31',source:'Invented price',market_fx:fx('SEK','0.0004','2026-01-31'),history:{currency:'VND',local_cost:'200000',date:'2026-01-01',fx:{SEK:fx('SEK','0.0005','2026-01-01'),USD:fx('USD','0.00005','2026-01-01')}}};const clone=()=>JSON.parse(JSON.stringify(original)),run=(x=clone(),base='SEK')=>snapshot([x],base,'2026-01-31',list);
+check(()=>assert.equal(run().total,'100.00000000'));check(()=>assert.equal(run().rows[0].local_value,'250000.00000000'));check(()=>assert.equal(run().rows[0].cost_base,'100.00000000'));
+check(()=>{let x=clone();x.market_fx.rate='0.0008';assert.equal(run(x).rows[0].cost_base,'100.00000000');assert.equal(run(x).rows[0].unrealized,'100.00000000')});
+check(()=>{let x=clone();x.market_fx=fx('USD','0.00004','2026-01-31');assert.equal(run(x,'USD').total,'10.00000000');assert.equal(run(x,'USD').rows[0].cost_base,'10.00000000')});
+check(()=>{let x=clone();x.market_fx=null;assert.equal(run(x,'VND').total,'250000.00000000')});
+check(()=>{let x=clone();x.market_fx.rate='';assert.equal(run(x).total,null);assert.equal(run(x).known_total,'0.00000000')});
+check(()=>{let x=clone();delete x.history.fx.SEK;assert.equal(run(x).rows[0].cost_base,null);assert.equal(run(x).total,'100.00000000')});
+for(const change of [x=>x.market_fx.to='USD',x=>x.market_fx.from='SEK',x=>x.market_fx.rate='0',x=>x.market_fx.rate='-1',x=>x.market_fx.rate='NaN',x=>x.price_date='2026-02-31',x=>x.market_fx.date='2026-01-30',x=>x.currency='ZZZ',x=>x.source='',x=>x.quantity='0',x=>x.history.date='2027-01-01'])check(()=>{let x=clone();change(x);assert.throws(()=>run(x))});
+check(()=>assert.throws(()=>run(clone(),'ZZZ')));check(()=>assert.throws(()=>snapshot([clone(),clone()],'SEK','2026-01-31',list)));
+check(()=>assert.equal(snapshot([],'SEK','2026-01-31',list).total,'0.00000000'));
+check(()=>assert.equal(codes.find(x=>x.code==='VND').minor_units,0));check(()=>assert(list.includes('BRL')));
+console.log(count+' multicurrency checks passed');
