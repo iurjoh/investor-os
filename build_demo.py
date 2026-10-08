@@ -11,4 +11,7 @@ result['trades'] = list(csv.DictReader(io.StringIO(SAMPLE_CSV)))
 currencies = {'XSTO': 'SEK', 'XNYS': 'USD', 'XTSE': 'CAD'}
 for trade in result['trades']:
     trade['currency'] = currencies[trade['mic']]
+from datetime import date
+from investor_os.income import income_summary, SAMPLE_EVENTS
+result['income'] = income_summary(SAMPLE_EVENTS, date(2026, 1, 31))
 pathlib.Path('web/portfolio.json').write_text(json.dumps(result, indent=2) + '\n')
