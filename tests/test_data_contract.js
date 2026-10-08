@@ -15,4 +15,6 @@ bad(d=>d.trades[0].currency='');bad(d=>d.trades[0].date='2026-02-30');
 bad(d=>d.trades.push(d.trades[0]));bad(d=>d.holdings.push(d.holdings[0]));
 bad(d=>d.trades[0].transaction_id=d.trades[1].transaction_id);
 bad(d=>d.holdings[0].cost_basis_sek='Infinity');bad(d=>delete d.holdings);
+bad(d=>d.income.events[0].status='promised');bad(d=>d.income.events[0].reconciled=false);bad(d=>d.income.events[0].net_sek='NaN');bad(d=>d.income.events.push(d.income.events[0]));bad(d=>d.income.totals.net_paid='NaN');
+bad(d=>d.income.totals.net_paid='100');bad(d=>d.income.events[0].net_sek='100');bad(d=>d.income.incomplete_expected=0);
 console.log(count+' data-contract checks passed');
