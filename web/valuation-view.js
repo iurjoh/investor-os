@@ -1,0 +1,16 @@
+(function(root){
+'use strict';let holdings;const el=id=>document.getElementById(id);const money=v=>v===null?'Indisponível':new Intl.NumberFormat('pt-BR',{style:'currency',currency:'SEK'}).format(Number(v));
+const initial=[{price:'160',fx:'1',currency:'SEK',sector:'Indústria fictícia'},{price:'22',fx:'10',currency:'USD',sector:'Consumo fictício'},{price:'38',fx:'7',currency:'CAD',sector:'Pesquisa fictícia'}];
+function inputs(){const data={};holdings.forEach((h,i)=>{data[h.ticker+'|'+h.mic]={price:el('price-'+i).value,fx:el('fx-'+i).value,date:el('date-'+i).value,source:'Entrada manual fictícia da demonstração',currency:initial[i].currency,sector:initial[i].sector}});return data;}
+function apply(){
+ el('valuation-results').replaceChildren();
+ try{const r=InvestorValuation.value(holdings,inputs(),el('valuation-date').value);el('valuation-status').textContent=r.complete?'Snapshot manual completo. Não é performance total.':'Dados incompletos: total e resultado da carteira indisponíveis.';
+ const out=el('valuation-results');const p=document.createElement('p');p.textContent='Valor de mercado: '+money(r.total)+' · valor conhecido: '+money(r.known_total)+' · ganho/perda não realizado: '+money(r.unrealized);out.append(p);
+ r.rows.forEach(row=>{const n=document.createElement('div');n.className='asset';const h=document.createElement('h3');h.textContent=row.name;const p=document.createElement('p');p.textContent='Mercado: '+money(row.market_value)+' · custo: '+money(row.cost)+' · não realizado: '+money(row.unrealized);const d=document.createElement('p');d.textContent=(row.date||'Sem data')+' · '+row.reason+' · '+(row.source||'Sem fonte');n.append(h,p,d);out.append(n)});
+ for(const [title,list] of [['Setores',r.sectors],['Moedas',r.currencies]]){const h=document.createElement('h3');h.textContent=title+' (parte conhecida)';out.append(h);list.forEach(g=>{const p=document.createElement('p');p.textContent=g.name+': '+money(g.value)+' · '+(g.weight===null?'Sem percentual':g.weight.toFixed(2)+'% da parte conhecida');out.append(p)})}
+ }catch(e){el('valuation-status').textContent='Entrada inválida. Use decimais com ponto, até 8 casas; data válida não futura e câmbio positivo (SEK = 1). Nenhum valor foi estimado.';}
+}
+function render(d){holdings=d.holdings;const root=el('valuation-inputs');root.replaceChildren();holdings.forEach((h,i)=>{const n=document.createElement('div');n.className='asset';const title=document.createElement('h3');title.textContent=h.name+' · '+initial[i].currency+' · '+initial[i].sector;n.append(title);[['price','Preço local','text',initial[i].price],['fx','SEK por '+initial[i].currency,'text',initial[i].fx],['date','Data do preço/FX','date','2026-01-31']].forEach(([key,label,type,v])=>{const l=document.createElement('label');l.htmlFor=key+'-'+i;l.textContent=label;const input=document.createElement('input');input.id=key+'-'+i;input.type=type;input.value=v;input.autocomplete='off';n.append(l,input)});root.append(n)});el('valuation-apply').onclick=apply;apply();}
+function reset(){el('valuation-date').value='2026-01-31';holdings.forEach((h,i)=>{el('price-'+i).value=initial[i].price;el('fx-'+i).value=initial[i].fx;el('date-'+i).value='2026-01-31'});apply();}
+root.InvestorValue={render,reset};
+})(globalThis);
