@@ -7,10 +7,10 @@
 
 Carteira, dividendos, alocação e metas com cálculos transparentes e determinísticos.
 
-**[Prévia pública](https://investor-os-app.pages.dev/)** · Código privado · Documentação conferida em **01/10/2026**.
+**[Demo de dashboard sintético](https://investor-os-dashboard.pages.dev/)** · [Landing separada](https://investor-os-app.pages.dev/) · Código público · Revisão em **08/10/2026**.
 
 
-> A URL pública é uma landing page, não um dashboard funcional. Os documentos registram uma planilha V1 implementada, com beta externo e distribuição ainda pendentes. Há também uma pequena base de cálculos Python. Listar tecnologias planejadas não significa que o app de assinatura esteja implementado.
+> O dashboard sintético somente leitura está no `main` (`web/`) e acessível na URL de demo, verificada em 08/10/2026. Mostra três empresas inventadas e sete operações, com custo remanescente de 4.627 SEK, não valor de mercado. Não aceita dados reais e não tem login, importação de corretora, backend ou armazenamento privado. Os gates de beta externo da planilha continuam separados e pendentes.
 
 ## Ideia e planejamento
 
@@ -31,7 +31,9 @@ Objetivos: cálculos claros, resumos úteis, ajustes manuais e dados auditáveis
 
 **Base Python existente:** Decimal, ordenação cronológica, custo de compras com taxas/impostos/câmbio, redução de custo na venda parcial, zeragem na venda total e rejeição de venda acima da posição.
 
-**Ainda não entregue como dashboard web:** autenticação, sincronização multiusuário, corretoras, cotações automáticas, assinaturas e distribuição pública.
+**Demo web sintética entregue:** visão geral, busca/estado vazio em posições, operações fictícias, exportação JSON sintética e reset.
+
+**Não entregue para uso privado:** autenticação, sincronização multiusuário, corretoras, cotações automáticas, assinaturas ou importação/armazenamento de dados reais.
 
 ## Arquitetura
 
@@ -50,7 +52,8 @@ graph TD
 | Base de cálculos | Biblioteca padrão Python e Decimal, em src/investor_os/portfolio.py. |
 | Dados | Modelo PostgreSQL em database/; não comprova banco hospedado funcionando. |
 | Direção pessoal | Interface local, tarefas locais, exportação CSV/JSON e backup criptografado: trabalho futuro. |
-| Site público | Apresentação do produto, sem conta ou carteira funcional. |
+| Dashboard público | HTML/JS estático e JSON gerado em `web/`; somente dados inventados, sem contas. |
+| Landing separada | Apresentação do produto, sem carteira privada. |
 
 [Arquitetura](docs/architecture.md) registra a direção atual: uso pessoal, local-first e custo zero. Propostas antigas citam Next.js, Supabase, n8n Cloud, Vercel, OpenAI e Gumroad; são opções históricas/planejadas, não serviços contratados. A direção atual rejeita cartão, trials e cobrança automática por excedente. IA não substitui aritmética financeira determinística.
 
@@ -101,7 +104,7 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 sh run_tests.sh
 ```
 
-O módulo inspecionado usa apenas a biblioteca padrão Python. Consultar [XLSX](product/xlsx-implementation.md) para a planilha. Não existe app `npm run dev` neste repo.
+O módulo inspecionado usa apenas a biblioteca padrão Python. Consultar [XLSX](product/xlsx-implementation.md) para a planilha. O dashboard estático roda com `python3 build_demo.py` e `python3 -m http.server 8000 --directory web`. Sem runtime Node ou backend. Ver [escopo e QA da demo](docs/web-demo.md).
 
 ## Publicação e próximos passos
 
@@ -131,10 +134,10 @@ Não rotular a planilha como produção antes do gate externo e dos testes de c�
 
 Iuri Johansson. Núcleo Python com biblioteca padrão; planilha destinada a Excel/LibreOffice. Terceiros mantêm seus próprios termos.
 
-[MIT](LICENSE), copyright 2026 Iuri Johansson. Repositório permanece privado.
+[MIT](LICENSE), copyright 2026 Iuri Johansson. Repositório público; dados financeiros pessoais ficam fora do Git.
 
 ## Revisão documental - 07/10/2026
 
 Este é um draft de documentação, não uma release nem nova auditoria de runtime. Foram conferidos visibilidade atual do repo, READMEs, scripts e caminho da licença na raiz. Testes e benchmarks históricos acima não foram repetidos. Capturas precisam de criação, revisão de privacidade, upload e inspeção da imagem renderizada. Imagens ausentes não são substituídas por embeds quebrados.
 
-`docs/synthetic-portfolio.md` documenta CLI de três empresas/sete operações inventadas e 14 testes históricos aprovados em 07/10/2026. Nenhum registro real usado. Existe branch separada de dashboard; reconciliar merge/deploy e README final antes de publicar este draft. A landing antiga não comprova dashboard disponível.
+`docs/synthetic-portfolio.md` documenta CLI de três empresas/sete operações inventadas e 14 testes históricos aprovados em 07/10/2026. Nenhum registro real usado. O código do dashboard está no `main`; a URL separada foi aberta e inspecionada visualmente em 08/10/2026. Esta revisão não certifica paridade de commit do deploy nem uso privado de investimentos. A documentação de quatro testes é histórica, não a contagem atual.
