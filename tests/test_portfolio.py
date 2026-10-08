@@ -38,3 +38,25 @@ class PositionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class InputContractTests(unittest.TestCase):
+    def test_rejects_nonfinite_negative_and_zero_inputs(self):
+        base = dict(transaction_date=date(2026, 1, 1), transaction_id='a', kind='buy',
+                    quantity=D('1'), gross_amount=D('10'), fees=D('0'), tax=D('0'), fx_rate=D('1'))
+        for key in ('quantity', 'gross_amount', 'fees', 'tax', 'fx_rate'):
+            for value in ('NaN', 'Infinity', '-1'):
+                with self.subTest(key=key, value=value), self.assertRaises(ValueError):
+                    calculate_position([Trade(**(base | {key: D(value)}))])
+        for key in ('quantity', 'fx_rate'):
+            with self.assertRaises(ValueError):
+                calculate_position([Trade(**(base | {key: D('0')}))])
+
+    def test_duplicate_id_rejected(self):
+        t = Trade(date(2026,1,1), 'same', 'buy', D('1'), D('0'))
+        with self.assertRaises(ValueError):
+            calculate_position([t,t])
+
+    def test_empty_and_zero_cost(self):
+        self.assertEqual(calculate_position([]).quantity,D('0'))
+        t = Trade(date(2026,1,1), 'free', 'buy', D('1'), D('0'))
+        self.assertEqual(calculate_position([t]).average_cost_base,D('0'))
