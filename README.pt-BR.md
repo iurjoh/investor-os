@@ -59,12 +59,12 @@ graph TD
 
 ## Design e snapshots
 
-Capturas guardadas no Drive privado do dono. Os links exigem acesso; não são imagens públicas incorporadas. O upload de imagens no repo falhou nesta atualização; não foram mantidos placeholders quebrados.
+Capturas datadas e guardadas no próprio repositório seguem pendentes. Evidências privadas do Drive não são linkadas.
 
 A prévia atual usa fundo escuro, verde, recursos numerados e status explícito. O desenho da planilha separa entradas, fórmulas, checks e onboarding.
 
 
-Não são capturas do dashboard. Wireframes antigos e uma captura verificável da planilha ainda não estão reunidos aqui. Usar somente artefatos reais com dados sintéticos; rotular mockups como mockups.
+Nenhum asset de captura está incluído neste draft. Adicionar capturas reais datadas do dashboard sintético só após revisão de privacidade e upload no repo. Rotular mockups como mockups.
 
 ## Processo de desenvolvimento
 
@@ -96,7 +96,7 @@ Antes de afirmar velocidade, medir quantidade de dados, tempo de importação/c�
 
 O [checklist](product/release-checklist.md) registra 20 casos de planilha usados na validação, mas testers externos e publicação continuam pendentes. Esta atualização não obteve nem executou a planilha e não certifica esses 20 resultados de forma independente.
 
-`tests/test_portfolio.py` contém quatro testes: venda parcial, câmbio/taxas/impostos, zeragem na venda total e rejeição de venda excessiva. **4/4 passaram localmente em 01/10/2026 com o código recuperado do repo.** É validação limitada do núcleo, não teste completo do produto.
+Verificação histórica de 01/10/2026: `tests/test_portfolio.py` continha quatro testes: venda parcial, câmbio/taxas/impostos, zeragem na venda total e rejeição de venda excessiva. **4/4 passaram localmente em 01/10/2026 com o código recuperado do repo.** É validação limitada do núcleo, não teste completo do produto.
 
 ```sh
 PYTHONPATH=src python3 -m unittest discover -s tests -v
