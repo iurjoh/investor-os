@@ -10,7 +10,7 @@ A public synthetic investing demo and auditable Python calculation core. Explore
 **[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
 
 
-> Current stage: public synthetic demo. Seven tabs are present in `main` (`web/`) and the live page opened on 2026-10-08: Overview, Holdings, Transactions, Income, Value and exposure, Goals and scenarios, and Currencies. The interface is PT-BR; this English README explains it. Inputs are for fictional scenarios only. No real-data import, login, broker connection, backend or private storage. Source/deploy commit parity is not independently verified. The workbook external-beta gates remain separate.
+> Current stage: public synthetic demo. Seven tabs are present in `main` (`web/`) and the live page opened on 2026-10-08: Overview, Holdings, Transactions, Income, Value and exposure, Goals and scenarios, and Currencies. The interface supports PT-BR (default) and English using the language selector. Only the language preference is stored locally; financial inputs are not saved. Numbers and currencies follow the selected locale; decimal input fields still require a dot. Inputs are for fictional scenarios only. No real-data import, login, broker connection, backend or private storage. Source/deploy commit parity is not independently verified. The workbook external-beta gates remain separate.
 
 ## Contents
 
