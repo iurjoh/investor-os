@@ -2,11 +2,9 @@
 
 **English** | [Português (Brasil)](README.pt-BR.md)
 
-[![Open demo](https://img.shields.io/badge/demo-live-2ea44f)](https://investor-os-dashboard.pages.dev/)
-
 ## Demo
 
-[Open demo](https://investor-os-dashboard.pages.dev/)
+[![Open demo](https://img.shields.io/badge/demo-live-2ea44f)](https://investor-os-dashboard.pages.dev/)
 
 Open in your browser. No installation or terminal required. Use fictional data only.
 
@@ -15,8 +13,7 @@ Open in your browser. No installation or terminal required. Use fictional data o
 
 A public synthetic investing demo and auditable Python calculation core. Explore invented data; this is not a private portfolio manager.
 
-**[Synthetic dashboard demo](https://investor-os-dashboard.pages.dev/)** · [Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
-
+[Separate product landing](https://investor-os-app.pages.dev/) · Public source repository · Documentation checked on **2026-10-08**.
 
 > Current stage: public synthetic demo. Seven tabs are present in `main` (`web/`) and the live page opened on 2026-10-08: Overview, Holdings, Transactions, Income, Value and exposure, Goals and scenarios, and Currencies. The interface supports PT-BR (default) and English using the language selector. Only the language preference is stored locally; financial inputs are not saved. Numbers and currencies follow the selected locale; decimal input fields still require a dot. Inputs are for fictional scenarios only. No real-data import, login, broker connection, backend or private storage. Source/deploy commit parity is not independently verified. The workbook external-beta gates remain separate.
 
@@ -84,7 +81,6 @@ Dated, repository-owned screenshots remain to be supplied. Private Drive evidenc
 
 The dashboard uses a dark background, green accents, seven tabbed views and an explicit fictional-data notice. The separate landing introduces the product direction; it is not the dashboard or a private app. Workbook design separates inputs, calculated areas, checks and onboarding.
 
-
 No screenshot asset is included in this draft. Add dated captures from the actual synthetic dashboard only after privacy review and successful repository upload. Never substitute a mockup without labelling it.
 
 ## Development process
@@ -125,7 +121,6 @@ PYTHONPATH=src python3 -m investor_os.sample_portfolio
 
 [Setup, format, expected results and privacy boundary](docs/synthetic-portfolio.md).
 14 local tests passed on 2026-10-07. The CLI generates the fixture used by the separate static dashboard; neither is a broker importer.
-
 
 The V1 [release checklist](product/release-checklist.md) records 20 workbook cases used for validation, but external testers and public-release gates remain unchecked. This update did not obtain or rerun the workbook, so it does not independently certify those 20 results.
 
