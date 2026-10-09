@@ -2,11 +2,9 @@
 
 [English](README.md) | **Português (Brasil)**
 
-[![Abrir demo](https://img.shields.io/badge/demo-live-2ea44f)](https://investor-os-dashboard.pages.dev/)
-
 ## Demo
 
-[Abrir demo](https://investor-os-dashboard.pages.dev/)
+[![Abrir demo](https://img.shields.io/badge/demo-live-2ea44f)](https://investor-os-dashboard.pages.dev/)
 
 Abra no navegador, sem instalar nada ou usar o terminal. Use apenas dados fictícios.
 
@@ -15,8 +13,7 @@ Abra no navegador, sem instalar nada ou usar o terminal. Use apenas dados fictí
 
 Demo pública sintética e núcleo Python com cálculos auditáveis. Explore dados inventados; não é gestor privado de carteira.
 
-**[Demo de dashboard sintético](https://investor-os-dashboard.pages.dev/)** · [Landing separada](https://investor-os-app.pages.dev/) · Código público · Revisão em **08/10/2026**.
-
+[Landing separada](https://investor-os-app.pages.dev/) · Código público · Revisão em **08/10/2026**.
 
 > Estágio atual: demo pública sintética. Sete abas estão no `main` (`web/`) e a página ao vivo abriu em 08/10/2026: Visão geral, Posições, Operações, Proventos, Valor e exposição, Metas e cenários e Moedas. A interface tem PT-BR (padrão) e inglês, com seletor de idioma. Só essa preferência é salva localmente, não os valores financeiros. Entradas servem apenas para cenários fictícios. Sem importação real, login, corretora, backend ou armazenamento privado. Paridade de commit source/deploy não confirmada de forma independente. Gates de beta externo da planilha continuam separados.
 
@@ -70,7 +67,6 @@ graph TD
 Capturas datadas e guardadas no próprio repositório seguem pendentes. Evidências privadas do Drive não são linkadas.
 
 Dashboard usa fundo escuro, verde, sete abas e aviso explícito de dados fictícios. A landing separada apresenta a direção do produto, não o dashboard nem app privado. A planilha separa entradas, fórmulas, checks e onboarding.
-
 
 Nenhum asset de captura está incluído neste draft. Adicionar capturas reais datadas do dashboard sintético só após revisão de privacidade e upload no repo. Rotular mockups como mockups.
 
