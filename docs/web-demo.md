@@ -51,3 +51,7 @@ Phase 1 data validation and calculation explanations: [contract](data-quality.md
 ## Current documentation check, 2026-10-08
 
 Seven tabs are present in main and the live page is reachable. UI text is PT-BR. The 2026-10-07 three-tab QA above is historical, not coverage of all seven current tabs. This round did not rerun tests or confirm deployed SHA. A Windows/Cryptomator private workflow remains planned; import, reconciliation, snapshot and restore must be proved separately with invented data before real use.
+
+## PT/EN interface
+
+The language selector preserves PT-BR as the default and saves only `investor-os-language` locally. All seven tabs, controls, result labels, accessibility labels and error states support English. Values use PT-BR or en-US number/currency display; decimal input still requires a dot. Language changes preserve active filters, tabs and invented input values. JSON exports and calculation modules are unchanged. If localStorage is blocked, the selector still works for that page. Run `NODE_PATH=/tmp/investor-qa/node_modules node tests/test_language.js` with the temporary Playwright tooling described in `tests/test_journey.js`.
