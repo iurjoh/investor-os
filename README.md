@@ -2,6 +2,14 @@
 
 **English** | [Português (Brasil)](README.pt-BR.md)
 
+[![Open demo](https://img.shields.io/badge/demo-live-2ea44f)](https://investor-os-dashboard.pages.dev/)
+
+## Demo
+
+[Open demo](https://investor-os-dashboard.pages.dev/)
+
+Open in your browser. No installation or terminal required.Use fictional data only.
+
 ![Stage: pre-external-beta](https://img.shields.io/badge/stage-pre--external--beta-yellow)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue)
 
