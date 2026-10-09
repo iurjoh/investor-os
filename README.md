@@ -8,7 +8,7 @@
 
 [Open demo](https://investor-os-dashboard.pages.dev/)
 
-Open in your browser. No installation or terminal required.Use fictional data only.
+Open in your browser. No installation or terminal required. Use fictional data only.
 
 ![Stage: pre-external-beta](https://img.shields.io/badge/stage-pre--external--beta-yellow)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue)
