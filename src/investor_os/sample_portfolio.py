@@ -29,41 +29,47 @@ def load_trades(text):
     gross/fees/tax are in one trade currency; FX converts each to SEK.
     Duplicate IDs and malformed values fail the whole import. No silent repair.
     """
-    reader = csv.DictReader(io.StringIO(text))
-    if set(reader.fieldnames or ()) not in (FIELDS, FIELDS | {'sequence'}):
-        raise ValueError("CSV columns must match the documented trade format")
-    seen = set()
-    grouped = {}
-    names = {}
-    for row in reader:
-        if None in row or any(v is None for v in row.values()):
-            raise ValueError("CSV row has missing or extra fields")
-        txid = row['transaction_id'].strip()
-        ticker, mic, name = (row[k].strip() for k in ('ticker', 'mic', 'name'))
-        if not txid or txid in seen:
-            raise ValueError("transaction IDs must be non-empty and unique")
-        if not ticker or not name or len(mic) != 4 or not mic.isascii() or not mic.isalnum() or mic != mic.upper():
-            raise ValueError("asset requires ticker, name and a four-character MIC")
-        seen.add(txid)
-        key = (ticker, mic)
-        if key in names and names[key] != name:
-            raise ValueError("inconsistent asset name")
-        names[key] = name
-        try:
-            values = {k: Decimal(row[k]) for k in ('quantity', 'gross_amount', 'fees', 'tax', 'fx_rate')}
-            day = date.fromisoformat(row['date'])
-            sequence_text = row.get('sequence', '').strip()
-            if sequence_text and (not sequence_text.isascii() or not sequence_text.isdigit()):
-                raise ValueError('invalid execution sequence')
-            sequence = int(sequence_text) if sequence_text else None
-        except (InvalidOperation, ValueError) as exc:
-            raise ValueError("invalid decimal or ISO date") from exc
-        if any(not v.is_finite() or v < 0 for v in values.values()) or values['fx_rate'] == 0:
-            raise ValueError("amounts must be finite and non-negative; FX positive")
-        if values['quantity'] == 0 or row['kind'] not in ('buy', 'sell'):
-            raise ValueError("trade requires positive quantity and buy/sell kind")
-        grouped.setdefault(key, []).append(Trade(day, txid, row['kind'], **values, sequence=sequence))
-    return names, grouped
+    try:
+        reader = csv.DictReader(io.StringIO(text), strict=True)
+        columns = reader.fieldnames or ()
+        if len(columns) != len(set(columns)):
+            raise ValueError("CSV column names must be unique")
+        if set(reader.fieldnames or ()) not in (FIELDS, FIELDS | {'sequence'}):
+            raise ValueError("CSV columns must match the documented trade format")
+        seen = set()
+        grouped = {}
+        names = {}
+        for row in reader:
+            if None in row or any(v is None for v in row.values()):
+                raise ValueError("CSV row has missing or extra fields")
+            txid = row['transaction_id'].strip()
+            ticker, mic, name = (row[k].strip() for k in ('ticker', 'mic', 'name'))
+            if not txid or txid in seen:
+                raise ValueError("transaction IDs must be non-empty and unique")
+            if not ticker or not name or len(mic) != 4 or not mic.isascii() or not mic.isalnum() or mic != mic.upper():
+                raise ValueError("asset requires ticker, name and a four-character MIC")
+            seen.add(txid)
+            key = (ticker, mic)
+            if key in names and names[key] != name:
+                raise ValueError("inconsistent asset name")
+            names[key] = name
+            try:
+                values = {k: Decimal(row[k]) for k in ('quantity', 'gross_amount', 'fees', 'tax', 'fx_rate')}
+                day = date.fromisoformat(row['date'])
+                sequence_text = row.get('sequence', '').strip()
+                if sequence_text and (not sequence_text.isascii() or not sequence_text.isdigit()):
+                    raise ValueError('invalid execution sequence')
+                sequence = int(sequence_text) if sequence_text else None
+            except (InvalidOperation, ValueError) as exc:
+                raise ValueError("invalid decimal or ISO date") from exc
+            if any(not v.is_finite() or v < 0 for v in values.values()) or values['fx_rate'] == 0:
+                raise ValueError("amounts must be finite and non-negative; FX positive")
+            if values['quantity'] == 0 or row['kind'] not in ('buy', 'sell'):
+                raise ValueError("trade requires positive quantity and buy/sell kind")
+            grouped.setdefault(key, []).append(Trade(day, txid, row['kind'], **values, sequence=sequence))
+        return names, grouped
+    except csv.Error as exc:
+        raise ValueError("malformed CSV quoting or structure") from exc
 
 
 def summarize(text):
