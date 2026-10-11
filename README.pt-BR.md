@@ -153,3 +153,10 @@ Código das sete abas e página ao vivo acessível conferidos nesta rodada docum
 ## Interface PT/EN
 
 A demonstração tem seletor Português/English, com PT-BR como padrão. Só a preferência de idioma é salva no navegador; valores financeiros continuam voláteis. Números e moedas seguem o idioma. Campos decimais de cálculo continuam exigindo ponto. Trocar idioma preserva os filtros e valores fictícios em edição; exportar JSON não traduz nem modifica os dados.
+
+### Proteções locais de CSV
+
+Uma proposta de regressões locais cobre CSV fictício malformado, campos
+ausentes e cargas repetidas no loader normalizado sem estado. Veja
+[escopo, defeitos e evidências](docs/local-csv-import-tests.md). Não é um
+importador de app privado nem prova de idempotência persistente.

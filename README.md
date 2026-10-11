@@ -174,3 +174,10 @@ This is a documentation draft, not a release or a fresh runtime audit. Current r
 ## Release and evidence boundary - 2026-10-08
 
 The seven-tab source and reachable live page were checked in this documentation round. No calculation, browser journey, recovery or benchmark suite was rerun here. Test counts above are dated historical results, not a current CI/deploy certificate. Record source SHA, deployment ID, smoke test and rollback artifact together before attesting a release. Keep real records out of this public demo until a separate private import, reconciliation, snapshot and restore workflow passes review.
+
+### Local CSV import guardrails
+
+A local regression proposal covers malformed synthetic CSV, missing fields and
+repeat loads in the stateless normalized loader. See
+[scope, defects and test evidence](docs/local-csv-import-tests.md). This is not
+a private-app importer or proof of persistent idempotency.
