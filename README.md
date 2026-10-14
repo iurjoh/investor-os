@@ -181,3 +181,16 @@ A local regression proposal covers malformed synthetic CSV, missing fields and
 repeat loads in the stateless normalized loader. See
 [scope, defects and test evidence](docs/local-csv-import-tests.md). This is not
 a private-app importer or proof of persistent idempotency.
+
+## Technology and effort snapshot
+
+Captured from repository sources on 2026-10-14. This is a source snapshot, not a claim about production versions or the technology available at the original launch.
+
+- **Stack at this snapshot:** Python >=3.10 declared in pyproject.toml; no runtime Python dependencies. Web demo: HTML, CSS and native JavaScript.
+- **Earlier record:** The surviving repository begins with a restored snapshot, not the original implementation. Earlier development cannot be dated from its root commit.
+- **Observed calendar window:** 2026-10-01 to 2026-10-11: surviving commits reachable from main. Calendar span, not continuous work or time to launch.
+- **Pull requests:** 15 visible PRs: 0 open, 15 closed, captured 2026-10-14 before this documentation change. Closed does not mean merged. Deleted/recreated history is excluded.
+- **Decision and reason:** Decimal arithmetic makes calculations inspectable; fictional demo data keeps private holdings out of the public app.
+- **Estimated active effort:** unavailable. No reliable time log or bounded work-session reconstruction was established. Commit count and elapsed calendar time are not converted into hours.
+
+Evidence: current dependency/source files named above, retained Git history and the repository PR list. Versions and counts are fixed to this snapshot, not live counters.
