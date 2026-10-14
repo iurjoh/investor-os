@@ -160,3 +160,16 @@ Uma proposta de regressões locais cobre CSV fictício malformado, campos
 ausentes e cargas repetidas no loader normalizado sem estado. Veja
 [escopo, defeitos e evidências](docs/local-csv-import-tests.md). Não é um
 importador de app privado nem prova de idempotência persistente.
+
+## Retrato da tecnologia e do esforço
+
+Registro das fontes do repositório em 2026-10-14. É um retrato do código, não uma afirmação sobre versões em produção nem sobre a tecnologia disponível no lançamento original.
+
+- **Stack neste registro:** Python >=3.10 declarado em pyproject.toml, sem dependências Python de execução. Demonstração web: HTML, CSS e JavaScript nativo.
+- **Registro anterior:** O repositório preservado começa com uma restauração, não com a implementação original. O commit raiz não permite datar o desenvolvimento anterior.
+- **Janela de calendário observada:** 2026-10-01 a 2026-10-11: commits preservados e alcançáveis em main. Intervalo de calendário, não trabalho contínuo nem prazo até o lançamento.
+- **Pull requests:** 15 PRs visíveis: 0 abertos, 15 fechados, consultados em 2026-10-14 antes desta alteração. Fechado não significa mergeado. Histórico apagado/recriado não entra na contagem.
+- **Decisão e motivo:** A aritmética Decimal permite inspecionar cálculos; dados fictícios mantêm posições privadas fora do app público.
+- **Estimativa de esforço ativo:** indisponível. Não foi estabelecido um registro confiável de tempo nem uma reconstrução delimitada das sessões de trabalho. Contagem de commits e tempo de calendário não são convertidos em horas.
+
+Evidências: arquivos de dependências/código citados acima, histórico Git preservado e lista de PRs do repositório. Versões e contagens pertencem a este registro, não são contadores ao vivo.
